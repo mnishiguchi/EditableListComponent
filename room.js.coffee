@@ -1,3 +1,5 @@
+R = React.DOM
+
 @Room =  React.createClass
 
   getInitialState: ->
@@ -22,7 +24,7 @@
       method:   'PATCH'
       url:      "/rooms/#{ @props.room.id }"
       dataType: 'JSON'
-      data: { room: input }
+      data:     { room: input }
     .done (data, textStatus, XHR) =>
       @props.handleUpdateRecord(@props.room, data)
       @setState(changed: false, updated: true)
@@ -54,7 +56,6 @@
     @setState(value: @props.room.name, changed: false)
 
   updateButton: ->
-    R = React.DOM
     R.div
       className: "input-group-addon"
       R.div null,
@@ -68,7 +69,6 @@
           "Cancel"
 
   deleteButton: ->
-    R = React.DOM
     R.button
       onClick: @handleDelete
       R.i
@@ -84,8 +84,6 @@
     string.charAt(0).toUpperCase() + string.slice(1)
 
   render: ->
-    R = React.DOM
-
     R.form
       className: "form-horizontal"
       R.div
