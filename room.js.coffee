@@ -24,7 +24,7 @@ R = React.DOM
       method:   'PATCH'
       url:      "/rooms/#{ @props.room.id }"
       dataType: 'JSON'
-      data:     { room: input }
+      data: { room: input }
     .done (data, textStatus, XHR) =>
       @props.handleUpdateRecord(@props.room, data)
       @setState(changed: false, updated: true)
@@ -70,9 +70,11 @@ R = React.DOM
 
   deleteButton: ->
     R.button
+      className: "btn btn-default"
       onClick: @handleDelete
       R.i
         className: "fa fa-times"
+        style: { color: "#DD0000" }
 
   fieldColor: ->
     if @state.changed
@@ -91,9 +93,10 @@ R = React.DOM
         R.div
           className: "input-group"
           R.div
-            className: "input-group-addon"
+            className: "input-group-btn"
             @deleteButton()
           R.input
+            style: { "fontSize": "1.5em" }
             className:   "form-control"
             type:        "text"
             placeholder: "new room"
